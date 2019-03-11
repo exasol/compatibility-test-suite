@@ -6,18 +6,20 @@
 CREATE OR REPLACE SCRIPT compare_table_contents (table_a, table_b) RETURNS TABLE AS
     exit(
        query([[
-           (SELECT '<<<',
+           (SELECT '<<<', A.*
+           FROM
                 (SELECT * FROM ::a
                 EXCEPT
                 SELECT * FROM ::b
-                )
-            )  
+                ) A
+            )
             UNION ALL
-            (SELECT '>>>',
+            (SELECT '>>>', A.*
+            FROM
                 (SELECT * FROM ::b
                 EXCEPT
                 SELECT * FROM ::a
-                )
+                ) A
             )
         ]], {a = table_a, b = table_b}
         )
