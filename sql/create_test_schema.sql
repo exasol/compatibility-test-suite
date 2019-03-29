@@ -1,16 +1,14 @@
-
-
 -- Note that the Camel Case and Snake Case are mixed here on
 -- purpose to see if they are handled correctly by the client.
 DROP SCHEMA IF EXISTS "Exasol_Compliance_Test" CASCADE;
 
-CREATE SCHEMA "";
+CREATE SCHEMA "Exasol_Compliance_Test";
 
 CREATE TABLE "BooleanType" (
     c_boolean BOOLEAN
 );
 
-CREATE TABLE "CharacterTypes"
+CREATE TABLE "CharacterTypes" (
     c_char20 CHAR(20),
     c_varchar40 VARCHAR(40)
 );
