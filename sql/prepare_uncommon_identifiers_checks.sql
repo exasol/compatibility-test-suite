@@ -29,4 +29,4 @@ CREATE TABLE "WRITE_TABLE_QUOTE""CONTAINED" LIKE "READ_TABLE_QUOTE""CONTAINED";
 
 INSERT INTO "READ_TABLE_@table" VALUES ('@ English', 'Text English');
 INSERT INTO "READ_TABLE_繁體中文" VALUES ('@ Traditional Chinese', 'Text Traditional Chinese');
-INSERT INTO "READ_TABLE_QUOTE""CONTAINED" VALUES('Double', 'Single', 'Forwared / backward tick')
+INSERT INTO "READ_TABLE_QUOTE""CONTAINED" VALUES('Double', 'Single', 'Forwared / backward tick');
