@@ -46,6 +46,6 @@ CREATE OR REPLACE SCRIPT fill_char_columns() AS
         { c = get_printable_ascii_string_of_length(MAX_CHAR_LEN),
           v = get_printable_ascii_string_of_length(MAX_VARCHAR_LEN)
         }
-    )
+    );
 
 EXECUTE SCRIPT fill_char_columns() WITH OUTPUT;
