@@ -3,3 +3,4 @@
 ~*
 *.out
 .dbeaver-data-sources.xml
+.idea
