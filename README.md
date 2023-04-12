@@ -31,6 +31,30 @@ EXECUTE SCRIPT compare_table_contents('EXASOL_CT_PRIMITIVE_TYPES.READ_BOOLEAN',
 'EXASOL_CT_PRIMITIVE_TYPES.WRITE_BOOLEAN');
 ```
 
+## Interpreting the Comparison Result
+
+The comparison result is pretty straight-forward. You get a table that contains a diff of the two tables. Entries that only exist in the left table (A) are marked with `<<<` while those that are only in the right table (B) are marked with `>>>`. In an ideal test case, both tables are identical, and you get zero result rows.
+
+Here is an example of the result for the following two tables:
+
+**Table A**
+
+| Row | C1        | C2  |
+|----:|-----------|-----|
+|   1 | in A only | 123 |
+|   2 | in both   | 456 |
+
+**Table B**
+
+| Row | C1        | C2  |
+|----:|-----------|-----|
+|   1 | in B only | 789 |
+|   2 | in both   | 456 |
+
+**Result**
+
+![Result of the table comparison script](doc/images/table_comparison_result.png)
+
 # Tested Aspects
 
 This test suite contains various test scenarios to check different compliance aspects. If you just started with your compliance tests, we recommend executing the test in the following order to ensure the basics work before you proceed to work on more complex concepts.
