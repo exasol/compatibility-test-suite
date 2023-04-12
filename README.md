@@ -11,16 +11,16 @@ This section explains the available test variant such as tests reading or writin
 ## Read Tests
 
 1. Use the provided scripts to create schema, tables, and datasets for the read tests.
-1. Read the table contents using the client under test and compare the acquired values with the originals.
-1. The read tests are successful if all the following criteria are met:
+2. Read the table contents using the client under test and compare the acquired values with the originals.
+3. The read tests are successful if all the following criteria are met:
     1. original and acquired values are identical
-    1. list of result sets matches
+    2. list of result sets matches
 
 ## Write Tests
 
 1. Use the provided scripts to create schema, tables, and data for comparison.
-1. Write the identical datasets found in the `READ_` table to the empty `WRITE_` table
-1. Compare the written datasets with the originals
+2. Write the identical datasets found in the `READ_` table to the empty `WRITE_` table
+3. Compare the written datasets with the originals
 
 You can either install and use the comparison Lua script ["compare_table_contents"](sql/test_utils.sql) or implement your own comparison. It is recommended that you use database-internal features for the actual comparison to avoid problems caused by incompatibilities between your test evaluation code and the database.
 
@@ -95,13 +95,13 @@ Use ["prepare_utf8_checks.sql"](sql/prepare_utf8_checks.sql) to create a schema,
 
 ## Identifier Case Handling Checks
 
-Exasol is case sensitive when it comes to object identifiers. This means that a table called `"People"` can co-exist in the same schema with tables called `"people"`, `"PEOPLE"` or any other case combinations. If you want to utilize the case sensitivity, you need to enclose object names in double quotes in your SQL commands.
+Exasol is case-sensitive when it comes to object identifiers. This means that a table called `"People"` can co-exist in the same schema with tables called `"people"`, `"PEOPLE"` or any other case combinations. If you want to utilize the case sensitivity, you need to enclose object names in double quotes in your SQL commands.
 
 Exasol converts all unquoted object identifiers to upper case. The potential pitfall for a client application here is if quoting is not handled uniformly. Or if the unsuspecting user uses two clients with different behavior. If users enter SQL code in your client, the safest option here is to reproduce identifiers and optional quotes exactly as written by the users. In effect the tables `"PEOPLE"` and `people` (mind the quotes) can't coexist in the same schema.
 
-If all code is generated in the client and users only provide object names, we recommend always quoting them – this makes the client case sensitive. While this increases the chance of error messages, it is better than the alternative of potentially creating SQL incompatible between two clients.
+If all code is generated in the client and users only provide object names, we recommend always quoting them – this makes the client case-sensitive. While this increases the chance of error messages, it is better than the alternative of potentially creating SQL incompatible between two clients.
 
-The script ["prepare_object_name_case_checks.sql"](sql/prepare_object_name_case_checks.sql) demonstrates Exasol's case sensitivity and the auto-upper-case conversion of unquoted object names. We create table and columns that have identical names &mdash; except for the character case. This way you can test whether your client can handle case sensitivity.
+The script ["prepare_identifiers_case_checks.sql"](sql/prepare_identifiers_case_checks.sql) demonstrates Exasol's case sensitivity and the auto-upper-case conversion of unquoted object names. We create table and columns that have identical names &mdash; except for the character case. This way you can test whether your client can handle case sensitivity.
 
 ## Uncommon Identifier Checks
 
