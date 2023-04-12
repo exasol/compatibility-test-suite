@@ -11,6 +11,7 @@ We renamed the first output column of the `COMPARE_TABLE_CONTENTS` script to `A_
 ## Feature
 
 * #15: Changed name of first result column in `COMPARE_TABLE_CONTENTS` script to `A_vs_B`
+* #3: Tests with ASCII encoding
 
 ## Documentation
 
